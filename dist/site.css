@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway|ZCOOL+QingKe+HuangYou);body {
+  background-color: #41B3A3; }
+
+.page__wrapper {
+  color: white;
+  font-family: "Raleway", sans-serif; }
+  .page__wrapper .data {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 25px; }
+    .page__wrapper .data__contacts, .page__wrapper .data__login {
+      width: 25%;
+      text-align: center;
+      border-radius: 3px;
+      border: 5px solid #E27D60; }
+      .page__wrapper .data__contacts--button, .page__wrapper .data__contacts--item, .page__wrapper .data__login--button, .page__wrapper .data__login--item {
+        border-radius: 2px;
+        font-size: 15px; }
+      .page__wrapper .data__contacts--button, .page__wrapper .data__login--button {
+        background-color: #E27D60;
+        color: white;
+        border: none;
+        padding: 20px 75px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 25px;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s; }
+        .page__wrapper .data__contacts--button:hover, .page__wrapper .data__login--button:hover {
+          background-color: #E8A87C; }
+      .page__wrapper .data__contacts--item, .page__wrapper .data__login--item {
+        margin-bottom: 20px;
+        padding: 15px;
+        font-size: 15px; }
+      .page__wrapper .data__contacts--title, .page__wrapper .data__login--title {
+        background-color: #E27D60;
+        padding: 5px; }
+    .page__wrapper .data__line {
+      width: 15%;
+      border-top: 1px solid #E27D60; }
+  .page__wrapper .main {
+    margin-left: 200px;
+    letter-spacing: 2.5px; }
+    .page__wrapper .main__title {
+      margin: 0;
+      font-family: "ZCOOL QingKe HuangYou", cursive;
+      font-size: 75px; }

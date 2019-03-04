@@ -1,4 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|ZCOOL+QingKe+HuangYou');
+
+$title_font: 'ZCOOL QingKe HuangYou', cursive;
+$default_title_size: 75px;
+$content_font: 'Raleway', sans-serif;
+
+// Colours
+$main_colour: #41B3A3;
+$font_colour: white;
+$accent_dark_orange: #E27D60;
+$accent_light_orange: #E8A87C;
+$accent_purple: #C38D9E;
+
 body {
-    color: blue;
-    font-size: 40px;
+    background-color: $main_colour;
 }
+
+.page__wrapper {
+    color: $font_colour;
+    font-family: $content_font;
+
+    .data {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 25px;
+
+        &__contacts, &__login {
+            width: 25%;
+            text-align: center;
+            border-radius: 3px;
+            border: 5px solid $accent_dark_orange;
+            
+            &--button, &--item {
+                border-radius: 2px;
+                font-size: 15px;
+            }
+            
+            &--button {
+                background-color: $accent_dark_orange;
+                color: white;
+                border: none;
+                padding: 20px 75px;
+                text-decoration: none;
+                display: inline-block;
+                margin-bottom: 25px;
+                -webkit-transition-duration: 0.4s;
+                transition-duration: 0.4s;
+                
+                &:hover {background-color: $accent_light_orange;}
+            }
+
+            &--item {
+                margin-bottom: 20px;
+                padding: 15px;
+                font-size: 15px;
+            }
+
+            &--title {
+                background-color: $accent_dark_orange;
+                padding: 5px;
+            }
+        }
+
+        &__line {
+            width: 15%;
+            border-top: 1px solid $accent_dark_orange;
+        }
+    }
+
+    .main {
+        margin-left: 200px; 
+        letter-spacing: 2.5px;
+        &__title {
+            margin: 0;
+            font-family: $title_font;
+            font-size: $default_title_size;
+        }
+    }
+
+    
+}
+
