@@ -11,9 +11,7 @@ $accent_dark_orange: #E27D60;
 $accent_light_orange: #E8A87C;
 $accent_purple: #C38D9E;
 
-body {
-    background-color: $main_colour;
-}
+body {background-color: $main_colour;}
 
 .page__wrapper {
     color: $font_colour;
@@ -36,17 +34,20 @@ body {
             }
             
             &--button {
-                background-color: $accent_dark_orange;
+                background-color: $accent_purple;
                 color: white;
                 border: none;
-                padding: 20px 75px;
+                padding: 20px 65px;
                 text-decoration: none;
                 display: inline-block;
                 margin-bottom: 25px;
                 -webkit-transition-duration: 0.4s;
                 transition-duration: 0.4s;
                 
-                &:hover {background-color: $accent_light_orange;}
+                &:hover {
+                    background-color: $accent_light_orange;
+                    cursor: pointer;
+                }
             }
 
             &--item {
@@ -57,23 +58,22 @@ body {
 
             &--title {
                 background-color: $accent_dark_orange;
-                padding: 5px;
             }
-        }
-
-        &__line {
-            width: 15%;
-            border-top: 1px solid $accent_dark_orange;
         }
     }
 
     .main {
         margin-left: 200px; 
         letter-spacing: 2.5px;
+        
         &__title {
             margin: 0;
             font-family: $title_font;
             font-size: $default_title_size;
+        }
+
+        &__subtitle {
+            align-content: flex-end;
         }
     }
 

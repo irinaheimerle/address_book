@@ -11,8 +11,8 @@
         <div class="page__wrapper">
             <!-- MAIN SECTION: INTRO | DESCRIPTION -->
             <div class="main">
-                <h3 class="main__title">Address Book</h3>
-                <p class="main__subtitle">PHP | MySQL | WebPack</p>
+                <h3 class="main__title" id="title">Address Book</h3>
+                <p class="main__subtitle" id="subtitle">PHP | MySQL | WebPack</p><br>
             </div>
 
             <!-- DATA SECTION: FORM | CONTACTS  -->
@@ -30,7 +30,9 @@
                     <p>Please login to add one</p>
                 </div>
             </div>
-            
         </div>
+
+        <!-- SCRIPTS SECTION -->
+        <script type="text/javascript" src="./dist/css.js"></script>
     </body>
 </html>
