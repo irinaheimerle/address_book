@@ -1,17 +1,3 @@
-<?php 
-    include("./authorized/connection_details.php");
-    $sql = "SELECT * FROM address_book";
-    $result = $conn->query($sql);
-
-    $contacts = array();
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            array_push($contacts, $row);
-        }
-    }        
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,22 +17,13 @@
 
             <!-- DATA SECTION: FORM | CONTACTS  -->
             <div class="data">
-                <form class="data__login" action="./views/add_view.php">
+                <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">LOGIN</h2>
                     <input type="text" class="data__login--item" placeholder="username" name="username"><br>
                     <input type="password" class="data__login--item" placeholder="password" name="password"><br>
                     <input type="submit" class="data__login--button" value="LOGIN">
+                    <input type="hidden" name="login" value="login">
                 </form>
-
-                <div class="data__contacts">
-                    <h2 class="data__contacts--title">CONTACTS</h2>
-                    <?php if(count($contacts) > 0) { ?>
-                        <?php foreach($contacts as $contact) {
-                            echo '<p>' . $contact["first_name"] . " " . $contact["surname"] . '</p>';
-                            echo '<a href="">Edit</a>' . " " . '<a href="">Delete</a>';
-                        }?>
-                    <?php } ?>
-                </div>
             </div>
         </div>
 

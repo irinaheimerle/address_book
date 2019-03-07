@@ -1,3 +1,12 @@
+<?php 
+    include("../authorized/connection_details.php");
+    $sql = "SELECT * FROM address_book";
+    $result = $conn->query($sql);
+
+    $contacts = array();
+    while($row = $result->fetch_assoc()) array_push($contacts, $row);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,20 +21,18 @@
             <!-- MAIN SECTION: INTRO | DESCRIPTION -->
             <div class="main">
                 <h3 class="main__title" id="title">Address Book</h3>
-                <p class="main__subtitle" id="subtitle">Administration: Add Contact</p><br>
+                <p class="main__subtitle" id="subtitle">Administration: EDIT Contact</p><br>
             </div>
 
             <!-- DATA SECTION: FORM | CONTACT   S  -->
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
-                    <h2 class="data__login--title">ADD CONTACT</h2>
-                    <input type="text" class="data__login--item" placeholder="first name" name="first_name"><br>
-                    <input type="test" class="data__login--item" placeholder="surname" name="surname"><br>
-                    <input type="text" class="data__login--item" placeholder="phone number" name="phone_number"><br>
-                    <input type="text" class="data__login--item" placeholder="postal code" name="postal_code"><br>
-                    <input type="date" class="data__login--item" name="birthday"><br>
-                    <input type="submit" class="data__login--button" name="submit" value="ADD CONTACT">
-                    <input type="hidden" name="add" value="add">
+                    <h2 class="data__login--title">DELETE CONTACT</h2>
+                    <p>Are you sure you want to delete customer <?php echo $contacts[0]["id"]; ?></p>
+                    <input type="submit" class="data__login--item" value="Yes"><br>
+                    <a href="./authenticated_view.php" class="data__login--item">Cancel</a>
+                    <input type="hidden" class="data__login--item" name="id" value="<?php echo $contacts[0]["id"]; ?>"><br>
+                    <input type="hidden" class="data__login--item" name="delete" value="delete"><br>
                 </form>
             </div>
         </div>

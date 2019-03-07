@@ -22,9 +22,9 @@ body {background-color: $main_colour;}
         justify-content: space-evenly;
         padding-top: 25px;
 
+        // FOR BOTH MAIN CONTENT BLOCKS
         &__contacts, &__login {
-            width: 25%;
-            text-align: center;
+            //text-align: center;
             border-radius: 3px;
             border: 5px solid $accent_dark_orange;
             
@@ -50,20 +50,62 @@ body {background-color: $main_colour;}
                 }
             }
 
+            &--filter {
+                padding: 0px 0px 25px 17px;
+
+                &--title {
+                    padding-right: 15px;
+                }
+            }
+
             &--item {
                 margin-bottom: 20px;
                 padding: 15px;
                 font-size: 15px;
             }
 
+            &--link {
+                text-decoration: none;
+                color: $accent_dark_orange;
+
+                &:hover {
+                    color: $accent_light_orange;
+                }
+            }
+
+            &--sections {
+                padding-left: 15px;
+                
+                
+                &--title {
+                    padding-right: 50px;
+                }
+            }
+
             &--title {
                 background-color: $accent_dark_orange;
+                text-align: left;
+                //padding-left: 20px;
             }
         }
+
+        // SPECIFIC CLASS STUFF
+        &__contacts {
+            padding-bottom: 25px;
+            width: 75%;
+        }
+        &__login {
+            text-align: center;
+            max-height: 300px;
+            width: 25%;
+
+            &--title {text-align:center;}
+        }
+        
     }
 
     .main {
-        margin-left: 200px; 
+        margin-left: 150px; 
         letter-spacing: 2.5px;
         
         &__title {
@@ -72,9 +114,8 @@ body {background-color: $main_colour;}
             font-size: $default_title_size;
         }
 
-        &__subtitle {
-            align-content: flex-end;
-        }
+        &__subtitle {align-content: flex-end;}
+        
     }
 
     
