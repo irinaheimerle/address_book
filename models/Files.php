@@ -15,7 +15,7 @@
 
             //if session exists, redirect
             if($_SESSION['loggedin'] == true) {
-                header("Location: ../views/authenticated_view.php");
+                header("Location: ../file.csv");
             }
 
             //close file
