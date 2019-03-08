@@ -13,39 +13,28 @@
 
 
     $months = array();
-
+    $current_contacts = array();
+    
     foreach($contacts as $contact) {
         foreach($contact as $key => $contact_data) {
             if($key == 'birthday') {
                 //pull month out of full date
                 $month = substr($contact_data, 5, -3);
-                if(!in_array($month, $months)) {
+                if(isset($_GET["filter_birthday"])) {
+                    if($month == $_GET["selected_month"]) array_push($current_contacts, $contact);
+                }
+                else if(!in_array($month, $months)) {
                     //push it into the array for content
                     array_push($months, $month);
                 }
             }
         }
     }
+    
 
-    $chosen_months = array();
+    
 
-    // TO-DO: RIN FIX THIS SHIT
-    // if(isset($_GET["filter_birthday"])) {
-    //     $_SESSION["use_filter"] = true;
-    //     if(isset($_GET['selected_month'])) {
-    //         foreach($contacts as $contact) {
-    //             foreach($contact as $key => $contact_data) {
-    //                 if($key == 'birthday') {
-    //                     //pull month out of full date
-    //                     $month = substr($contact_data, 5, -3);
-    //                     if($month == $_GET['selected_month']) {
-    //                         array_push($chosen_months, $contact_data);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    
 ?>
 
 <!DOCTYPE html>
@@ -99,9 +88,25 @@
                             <th class="data__contacts--table--sections--title">Email Address</th>
                             <th class="data__contacts--table--sections--title">Postal Code</th>
                             <th class="data__contacts--table--sections--title">Birthday</th>
-
-                            <!-- BUILD TABLE DATA BASED ON CONTACTS -->
-                            <?php foreach($contacts as $contact) {
+                            
+                            <?php if(count($current_contacts)) {
+                                foreach($current_contacts as $contact) {
+                                    echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
+                                    echo $contact['id'];
+                                    echo "</td><td class='data__contacts--sections--data'>";   
+                                    echo $contact['first_name'] . " " . $contact["surname"];
+                                    echo "</td><td class='data__contacts--sections--data'>";
+                                    echo $contact['phone_number'];
+                                    echo "</td><td class='data__contacts--sections--data'>";
+                                    echo $contact['email_address'];
+                                    echo "</td><td class='data__contacts--sections--data'>"; 
+                                    echo $contact['postal_code'];
+                                    echo "</td><td class='data__contacts--sections--data'>"; 
+                                    echo $contact['birthday'];
+                                    echo "<br>" . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href=./delete_view.php?id=', $contact["id"] ,' class="data__contacts--link">Delete</a>';
+                                    echo "</td></tr>"; 
+                                } 
+                            } else foreach($contacts as $contact) {
                                 echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
                                 echo $contact['id'];
                                 echo "</td><td class='data__contacts--sections--data'>";   
@@ -116,7 +121,8 @@
                                 echo $contact['birthday'];
                                 echo "<br>" . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href=./delete_view.php?id=', $contact["id"] ,' class="data__contacts--link">Delete</a>';
                                 echo "</td></tr>"; 
-                            }?>
+                            }
+                            ?>
                         </table>
                     </div>
                 </div>

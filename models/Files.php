@@ -31,6 +31,7 @@
                 $filename = $this->given_file['tmp_name'];
                 $file = fopen($filename, "r");
                 while(($reading = fgetcsv($file))) {
+                    //make a new contact to add to DB!
                     $addContact = new Contact();
                     //sanitize and enter data
                     $addContact->first_name = filter_var($reading[1], FILTER_SANITIZE_STRING);

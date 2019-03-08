@@ -3,6 +3,8 @@
     include("../models/Authentication.php");
     include("../models/Files.php");
 
+    
+    // SECTION | AUTHENTICATION
     if(isset($_GET["login"]) && isset($_GET["username"]) && isset($_GET["password"])) {
         $user = new Authentication();
 
@@ -13,12 +15,8 @@
         
     }
 
-    if(isset($_GET["filter_birthday"])) {
-        $contact = new Contact();
-
-        $contact->filterContacts();
-    }
-
+    
+    // SECTION | FILES
     if(isset($_GET["export_csv"])) {
         $file = new Files();
 
@@ -34,6 +32,7 @@
         
     }
 
+    // SECTION | CONTACTS
     if(isset($_GET["add"])) {
         if(isset($_GET["first_name"]) && isset($_GET["surname"]) && isset($_GET["phone_number"]) && isset($_GET["email_address"]) && isset($_GET["postal_code"]) && isset($_GET["birthday"])) {
             $contact = new Contact();
