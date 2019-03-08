@@ -88,32 +88,35 @@
                             </form>
                         </div>
                     </div>
-                    <table class="data__contacts--sections">
-                        <th class="data__contacts--sections--title">Customer ID</th>
-                        <th class="data__contacts--sections--title">Customer Name</th>
-                        <th class="data__contacts--sections--title">Customer Phone #</th>
-                        <th class="data__contacts--sections--title">Customer Email Address</th>
-                        <th class="data__contacts--sections--title">Customer Postal Code</th>
-                        <th class="data__contacts--sections--title">Customer Birthday</th>
+                    <!-- TABLE TO SHOW CONTACT DATA -->
+                    <div class="data__contacts--table">
+                        <table class="data__contacts--table--sections">
+                            <th class="data__contacts--table--sections--title">ID</th>
+                            <th class="data__contacts--table--sections--title">Name</th>
+                            <th class="data__contacts--table--sections--title">Phone #</th>
+                            <th class="data__contacts--table--sections--title">Email Address</th>
+                            <th class="data__contacts--table--sections--title">Postal Code</th>
+                            <th class="data__contacts--table--sections--title">Birthday</th>
 
-                        <!-- BUILD TABLE DATA BASED ON CONTACTS -->
-                        <?php foreach($contacts as $contact) {
-                            echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
-                            echo $contact['id'];
-                            echo "</td><td class='data__contacts--sections--data'>";   
-                            echo $contact['first_name'] . " " . $contact["surname"];
-                            echo "</td><td class='data__contacts--sections--data'>";
-                            echo $contact['phone_number'];
-                            echo "</td><td class='data__contacts--sections--data'>";
-                            echo $contact['email_address'];
-                            echo "</td><td class='data__contacts--sections--data'>"; 
-                            echo $contact['postal_code'];
-                            echo "</td><td class='data__contacts--sections--data'>"; 
-                            echo $contact['birthday'];
-                            echo " " . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href=./delete_view.php?id=', $contact["id"] ,' class="data__contacts--link">Delete</a>';
-                            echo "</td></tr>"; 
-                        }?>
-                    </table>
+                            <!-- BUILD TABLE DATA BASED ON CONTACTS -->
+                            <?php foreach($contacts as $contact) {
+                                echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
+                                echo $contact['id'];
+                                echo "</td><td class='data__contacts--sections--data'>";   
+                                echo $contact['first_name'] . " " . $contact["surname"];
+                                echo "</td><td class='data__contacts--sections--data'>";
+                                echo $contact['phone_number'];
+                                echo "</td><td class='data__contacts--sections--data'>";
+                                echo $contact['email_address'];
+                                echo "</td><td class='data__contacts--sections--data'>"; 
+                                echo $contact['postal_code'];
+                                echo "</td><td class='data__contacts--sections--data'>"; 
+                                echo $contact['birthday'];
+                                echo "<br>" . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href=./delete_view.php?id=', $contact["id"] ,' class="data__contacts--link">Delete</a>';
+                                echo "</td></tr>"; 
+                            }?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -77,14 +77,20 @@ body {background-color: $main_colour;}
                 display: none;
             }
 
-            &--sections {
-                padding-left: 15px;
-                
-                
-                &--title {
-                    padding-right: 50px;
+            &--table {
+                &--sections {
+                    text-align: center;
+                    &--data {
+                        padding: 10px;
+                    }  
+                    
+                    &--title {
+                        padding-left: 20px;
+                    }
                 }
             }
+
+            
 
             &--title {
                 background-color: $accent_dark_orange;
