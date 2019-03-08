@@ -1,7 +1,8 @@
 <?php
     session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
-    class Contact { 
+    class Contact {
+        //public variables 
         public $id;
         public $first_name;
         public $surname;
@@ -10,7 +11,9 @@
         public $postal_code;
         public $birthday;
         
+        //public functions
 
+        //add contact function
         public function addContact() {
             include("../authorized/connection_details.php");
             if($stmt = mysqli_prepare($conn,"INSERT INTO address_book (first_name, surname, phone_number, email_address, postal_code, birthday) VALUES (?,?,?,?,?,?)")) {
@@ -22,6 +25,7 @@
             }
         }
 
+        //edit contact function
         public function editContact() {
             include("../authorized/connection_details.php");
             if ($stmt = mysqli_prepare($conn, "UPDATE address_book SET first_name=?, surname=?, email_address=?, phone_number=?, postal_code=?, birthday=? WHERE id=?")) {
@@ -36,6 +40,7 @@
             
         }
 
+        //delete contact function
         public function deleteContact() {
             include("../authorized/connection_details.php");
             if($stmt = mysqli_prepare($conn, "DELETE FROM address_book WHERE id=?"));

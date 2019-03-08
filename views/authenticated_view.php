@@ -3,18 +3,21 @@
     include("../authorized/connection_details.php");
 
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
-    
+
+    //grab all contacts
     $sql = "SELECT * FROM address_book";
+    //send out query
     $result = $conn->query($sql);
 
     $contacts = array();
 
     while($row = $result->fetch_assoc()) array_push($contacts, $row);
 
-
+    //for filtering
     $months = array();
     $current_contacts = array();
     
+    //filter by month if necessary
     foreach($contacts as $contact) {
         foreach($contact as $key => $contact_data) {
             if($key == 'birthday') {
@@ -30,10 +33,6 @@
             }
         }
     }
-    
-
-    
-
     
 ?>
 

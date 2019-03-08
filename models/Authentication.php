@@ -1,8 +1,11 @@
 <?php 
+    // AUTHENTICATION CLASS
     Class Authentication {
+        // public variables
         public $username = "";
         public $password = "";
-         
+        
+        //public functions
         public function login() {
             include("../authorized/connection_details.php");
 

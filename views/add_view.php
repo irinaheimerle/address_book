@@ -23,12 +23,12 @@
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">ADD CONTACT</h2>
-                    <input type="text" class="data__login--item" placeholder="first name" name="first_name"><br>
-                    <input type="test" class="data__login--item" placeholder="surname" name="surname"><br>
-                    <input type="text" class="data__login--item" placeholder="phone number" name="phone_number"><br>
-                    <input type="text" class="data__login--item" placeholder="email address" name="email_address"><br>
-                    <input type="text" class="data__login--item" placeholder="postal code" name="postal_code"><br>
-                    <input type="date" class="data__login--item" name="birthday"><br>
+                    <input type="text" class="data__login--item" placeholder="first name" name="first_name" required><br>
+                    <input type="test" class="data__login--item" placeholder="surname" name="surname" required><br>
+                    <input type="text" class="data__login--item" placeholder="phone number" name="phone_number" required><br>
+                    <input type="text" class="data__login--item" placeholder="email address" name="email_address" required><br>
+                    <input type="text" class="data__login--item" placeholder="postal code" name="postal_code" required><br>
+                    <input type="date" class="data__login--item" name="birthday" required><br>
                     <input type="submit" class="data__login--button" name="submit" value="ADD CONTACT">
                     <a href="../views/authenticated_view.php" class="data__login--button">CANCEL</a>
                     <input type="hidden" name="add" value="add">
