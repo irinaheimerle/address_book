@@ -45,8 +45,6 @@
                     $addContact->birthday = filter_var($reading[6], FILTER_SANITIZE_STRING);
 
                     $addContact->addContact();
-                    
-                    
                 }
             } else header("Location: ../views/import_view.php");exit();
         }

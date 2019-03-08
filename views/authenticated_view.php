@@ -39,23 +39,20 @@
     
     //if client chooses email function
     if(isset($_GET["email"])) {
-        // the message
+        ini_set("SMTP", "aspmx.l.google.com");
+        ini_set("sendmail_from", "rin@address_book.local");
+
         $msg = "Hello, I want to welcome you to our company!";
-
-        // use wordwrap() if lines are longer than 70 characters
-        $msg = wordwrap($msg,70);
-
+        
+        $headers = "From: rin@address_book.local";
+        
         foreach($contacts as $contact) {
             //mail($contact["email_address"],"Welcome to our Company",$msg);
             $sent = true;
         }
 
-        //let the client know!
-        if($sent) $output = "Email Sent!";
+        if($sent) $output = "Emails sent!";
     }
-
-
-    
 ?>
 
 <!DOCTYPE html>

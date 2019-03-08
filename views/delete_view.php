@@ -26,8 +26,8 @@
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">DELETE CONTACT</h2>
                     <p>Are you sure you want to delete customer <?php echo $current_contact; ?></p>
-                    <input type="submit" class="data__login--item" value="Yes"><br>
-                    <a href="./authenticated_view.php" class="data__login--item">Cancel</a>
+                    <input type="submit" class="data__login--button" value="Yes"><br>
+                    <a href="../views/authenticated_view.php" class="data__login--button">CANCEL</a>
                     <input type="hidden" class="data__login--item" name="id" value="<?php echo $current_contact; ?>"><br>
                     <input type="hidden" class="data__login--item" name="delete" value="delete"><br>
                 </form>

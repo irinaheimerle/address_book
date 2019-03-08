@@ -78,14 +78,16 @@ body {background-color: $main_colour;}
             // }
 
             &--table {
+                margin-left: 100px;
                 &--sections {
                     text-align: center;
                     &--data {
-                        padding: 10px;
+                        padding-left: 15px;
                     }  
                     
                     &--title {
                         padding-left: 20px;
+                        padding-bottom: 20px;
                     }
                 }
             }

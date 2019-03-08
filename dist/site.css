@@ -40,12 +40,15 @@
         color: #E27D60; }
         .page__wrapper .data__contacts--link:hover, .page__wrapper .data__login--link:hover {
           color: #E8A87C; }
-      .page__wrapper .data__contacts--table--sections, .page__wrapper .data__login--table--sections {
-        text-align: center; }
-        .page__wrapper .data__contacts--table--sections--data, .page__wrapper .data__login--table--sections--data {
-          padding: 10px; }
-        .page__wrapper .data__contacts--table--sections--title, .page__wrapper .data__login--table--sections--title {
-          padding-left: 20px; }
+      .page__wrapper .data__contacts--table, .page__wrapper .data__login--table {
+        margin-left: 100px; }
+        .page__wrapper .data__contacts--table--sections, .page__wrapper .data__login--table--sections {
+          text-align: center; }
+          .page__wrapper .data__contacts--table--sections--data, .page__wrapper .data__login--table--sections--data {
+            padding-left: 15px; }
+          .page__wrapper .data__contacts--table--sections--title, .page__wrapper .data__login--table--sections--title {
+            padding-left: 20px;
+            padding-bottom: 20px; }
       .page__wrapper .data__contacts--title, .page__wrapper .data__login--title {
         background-color: #E27D60;
         text-align: left;
