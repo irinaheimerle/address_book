@@ -15,6 +15,7 @@
 
             //if session exists, redirect
             if($_SESSION['loggedin'] == true) {
+                //download the file!
                 header("Location: ../file.csv");
             }
 
