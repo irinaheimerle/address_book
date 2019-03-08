@@ -39,8 +39,8 @@
                     //sanitize and enter data
                     $addContact->first_name = filter_var($reading[1], FILTER_SANITIZE_STRING);
                     $addContact->surname =filter_var($reading[2], FILTER_SANITIZE_STRING);
-                    $addContact->email_address = filter_var($reading[4], FILTER_SANITIZE_STRING);
-                    $addContact->phone_number = filter_var($reading[3], FILTER_SANITIZE_STRING);
+                    $addContact->email_address = filter_var($reading[3], FILTER_SANITIZE_STRING);
+                    $addContact->phone_number = filter_var($reading[4], FILTER_SANITIZE_STRING);
                     $addContact->postal_code = filter_var($reading[5], FILTER_SANITIZE_STRING);
                     $addContact->birthday = filter_var($reading[6], FILTER_SANITIZE_STRING);
 
