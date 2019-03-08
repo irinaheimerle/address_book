@@ -43,6 +43,7 @@
 
                     $addContact->addContact();
                     
+                    
                 }
             } else header("Location: ../views/import_view.php");exit();
         }
