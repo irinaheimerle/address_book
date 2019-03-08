@@ -1,3 +1,6 @@
+<?php 
+    if($_SESSION['loggedin'] == false) header("Location: ../index.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +18,7 @@
                 <p class="main__subtitle" id="subtitle">Administration: Add Contact</p><br>
             </div>
 
-            <!-- DATA SECTION: FORM | CONTACT   S  -->
+            <!-- DATA SECTION: FORM | CONTACTS -->
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">ADD CONTACT</h2>
@@ -29,8 +32,5 @@
                 </form>
             </div>
         </div>
-
-        <!-- SCRIPTS SECTION -->
-        <script type="text/javascript" src="./dist/css.js"></script>
     </body>
 </html>

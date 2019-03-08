@@ -1,6 +1,9 @@
 <?php 
+    if($_SESSION['loggedin'] == false) header("Location: ../index.php");
+    //include db creds
     include("../authorized/connection_details.php");
 
+    //grab current contact through query string
     $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING']));
     
     $sql = "SELECT * FROM address_book WHERE id=$current_contact";
@@ -50,8 +53,5 @@
                 </form>
             </div>
         </div>
-
-        <!-- SCRIPTS SECTION -->
-        <script type="text/javascript" src="./dist/css.js"></script>
     </body>
 </html>

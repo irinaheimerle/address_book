@@ -26,8 +26,5 @@
                 </form>
             </div>
         </div>
-
-        <!-- SCRIPTS SECTION -->
-        <script type="text/javascript" src="./dist/css.js"></script>
     </body>
 </html>

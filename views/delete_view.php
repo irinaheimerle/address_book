@@ -1,4 +1,7 @@
-<?php $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); ?>
+<?php 
+    if($_SESSION['loggedin'] == false) header("Location: ../index.php");
+    $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,7 @@
                 <p class="main__subtitle" id="subtitle">Administration: EDIT Contact</p><br>
             </div>
 
-            <!-- DATA SECTION: FORM | CONTACT   S  -->
+            <!-- DATA SECTION: FORM | CONTACTS  -->
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">DELETE CONTACT</h2>
@@ -29,8 +32,5 @@
                 </form>
             </div>
         </div>
-
-        <!-- SCRIPTS SECTION -->
-        <script type="text/javascript" src="./dist/css.js"></script>
     </body>
 </html>

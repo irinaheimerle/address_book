@@ -2,8 +2,8 @@
     session_start();
     include("../authorized/connection_details.php");
 
-    if(!isset($_SESSION)) header("Location: ../index.php");
-
+    if($_SESSION['loggedin'] == false) header("Location: ../index.php");
+    
     $sql = "SELECT * FROM address_book";
     $result = $conn->query($sql);
 
@@ -11,14 +11,41 @@
 
     while($row = $result->fetch_assoc()) array_push($contacts, $row);
 
-    $_SESSION['contacts'] = $contacts;
 
-    if(isset($_GET["filter_birthday"])) {
-        $sql = "SELECT * FROM address_book ORDER BY birthday DESC";
+    $months = array();
 
-        $result = $conn->query($sql);
-        $conn->close();
+    foreach($contacts as $contact) {
+        foreach($contact as $key => $contact_data) {
+            if($key == 'birthday') {
+                //pull month out of full date
+                $month = substr($contact_data, 5, -3);
+                if(!in_array($month, $months)) {
+                    //push it into the array for content
+                    array_push($months, $month);
+                }
+            }
+        }
     }
+
+    $chosen_months = array();
+
+    // TO-DO: RIN FIX THIS SHIT
+    // if(isset($_GET["filter_birthday"])) {
+    //     $_SESSION["use_filter"] = true;
+    //     if(isset($_GET['selected_month'])) {
+    //         foreach($contacts as $contact) {
+    //             foreach($contact as $key => $contact_data) {
+    //                 if($key == 'birthday') {
+    //                     //pull month out of full date
+    //                     $month = substr($contact_data, 5, -3);
+    //                     if($month == $_GET['selected_month']) {
+    //                         array_push($chosen_months, $contact_data);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +78,15 @@
                 <div class="data__contacts">
                     <h2 class="data__contacts--title">CONTACTS</h2>
                     <div class="data__contacts--filter">
-                        <form action=""><input type="submit" class="data__contacts--link" value="Filter Contacts by Birthday Month" name="filter_birthday"></span></form>
+                        <a href="#" id="filter_months" class="data__contacts--link" name="filter_birthday">Filter Contacts by Birthday Month</a></span>
+                        <div id="show_months" class="data__contacts--months">
+                            <form action="">
+                                <?php foreach($months as $month) { ?> 
+                                    <input type="submit" value="<?php echo $month ?>" name="selected_month">
+                                <?php } ?>
+                                <input type="hidden" name="filter_birthday" value="filter_birthday">
+                            </form>
+                        </div>
                     </div>
                     <table class="data__contacts--sections">
                         <th class="data__contacts--sections--title">Customer ID</th>
@@ -60,7 +95,8 @@
                         <th class="data__contacts--sections--title">Customer Postal Code</th>
                         <th class="data__contacts--sections--title">Customer Birthday</th>
 
-                        <?php foreach($_SESSION["contacts"] as $contact) {
+                        <!-- BUILD TABLE DATA BASED ON CONTACTS -->
+                        <?php foreach($contacts as $contact) {
                             echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
                             echo $contact['id'];
                             echo "</td><td class='data__contacts--sections--data'>";   
@@ -71,7 +107,7 @@
                             echo $contact['postal_code'];
                             echo "</td><td class='data__contacts--sections--data'>"; 
                             echo $contact['birthday'];
-                            echo " " . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href="./delete_view.php" class="data__contacts--link">Delete</a>';
+                            echo " " . '<a href=./edit_view.php?id=', $contact["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href=./delete_view.php?id=', $contact["id"] ,' class="data__contacts--link">Delete</a>';
                             echo "</td></tr>"; 
                         }?>
                     </table>
@@ -80,6 +116,6 @@
         </div>
 
         <!-- SCRIPTS SECTION -->
-        <script type="text/javascript" src="./dist/css.js"></script>
+        <script type="text/javascript" src="../dist/css.js"></script>
     </body>
 </html>

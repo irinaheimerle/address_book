@@ -1,4 +1,5 @@
 <?php
+    if($_SESSION['loggedin'] === 0) header("Location: ../index.php");
     class Contact { 
         public $id;
         public $first_name;
@@ -9,39 +10,46 @@
 
         public function addContact() {
             include("../authorized/connection_details.php");
-            $sql = "INSERT INTO address_book (first_name, surname, phone_number, postal_code, birthday)
-            VALUES ('$this->first_name', '$this->surname', '$this->phone_number', '$this->postal_code', '$this->birthday')";
+            if($stmt = mysqli_prepare($conn,"INSERT INTO address_book (first_name, surname, phone_number, postal_code, birthday) VALUES (?,?,?,?,?)")) {
+                $stmt->bind_param("sssss", $this->first_name, $this->surname, $this->phone_number, $this->postal_code, $this->birthday);
+                $sent = $stmt->execute();
 
-            if ($conn->query($sql) === TRUE) header("Location: ../views/authenticated_view.php");
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                if($sent && $_SESSION['loggedin'] === 0) {
+                    header("Location: ../views/authenticated_view.php");
+                    exit();
+                }
+                else header("Location: ../index.php");exit();
             }
-
-            $conn->close();
         }
 
         public function editContact() {
             include("../authorized/connection_details.php");
-            $sql = "UPDATE address_book SET first_name='$this->first_name', surname='$this->surname', phone_number='$this->phone_number', postal_code='$this->postal_code', birthday='$this->birthday' WHERE id='$this->id'";
+            if ($stmt = mysqli_prepare($conn, "UPDATE address_book SET first_name=?, surname=?, phone_number=?, postal_code=?, birthday=? WHERE id=?")) {
+                $stmt->bind_param('sssssi', $this->first_name, $this->surname, $this->phone_number, $this->postal_code, $this->birthday, $this->id); 
+                $sent = $stmt->execute();
 
-            if ($conn->query($sql) === TRUE) header("Location: ../views/authenticated_view.php");
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                if($sent && isset($_SESSION)) {
+                    header("Location: ../views/authenticated_view.php");
+                    exit();
+                }
+                else header("Location: ../index.php");exit();
             }
 
-            $conn->close();
+
+            
         }
 
         public function deleteContact() {
             include("../authorized/connection_details.php");
-            $sql = "DELETE FROM address_book WHERE id=1";
+            if($stmt = mysqli_prepare($conn, "DELETE FROM address_book WHERE id=?"));
+            $stmt->bind_param('i', $this->id);
+            $sent = $stmt->execute();
 
-            if ($conn->query($sql) === TRUE) header("Location: ../views/authenticated_view.php");
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+            if($sent && isset($_SESSION)) {
+                header("Location: ../views/authenticated_view.php");
+                exit();
             }
-
-            $conn->close();
+            else header("Location: ../index.php");exit();
         }
 
         

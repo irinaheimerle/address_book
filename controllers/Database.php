@@ -50,7 +50,7 @@
             $contact->birthday = $_GET["birthday"];
     
             $contact->editContact();
-        } else echo "yoooo";
+        }
     }
 
     if(isset($_GET["delete"])) {
