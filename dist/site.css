@@ -41,7 +41,7 @@
         .page__wrapper .data__contacts--link:hover, .page__wrapper .data__login--link:hover {
           color: #E8A87C; }
       .page__wrapper .data__contacts--table, .page__wrapper .data__login--table {
-        margin-left: 100px; }
+        margin-left: 50px; }
         .page__wrapper .data__contacts--table--sections, .page__wrapper .data__login--table--sections {
           text-align: center; }
           .page__wrapper .data__contacts--table--sections--data, .page__wrapper .data__login--table--sections--data {
