@@ -67,18 +67,23 @@
                 <!-- DATA SECTION: CONTACTS  -->
                 <div class="data__contacts">
                     <h2 class="data__contacts--title">CONTACTS</h2>
-                    <div class="data__contacts--filter">
-                        <a href="#" id="filter_months" class="data__contacts--link" name="filter_birthday">Filter Contacts by Birthday Month</a></span>
-                        <div id="show_months" class="data__contacts--months">
-                            <form action="">
-                                <!-- OUTPUT MONTHS FOUND IN DATABASE CURRENTLY -->
-                                <?php foreach($months as $month) { ?> 
-                                    <input type="submit" value="<?php echo $month ?>" name="selected_month">
-                                <?php } ?>
-                                <input type="hidden" name="filter_birthday" value="filter_birthday">
-                            </form>
+                    <?php if(!isset($_GET["filter_birthday"])) { ?>
+                        <div class="data__contacts--filter">
+                            <a href="#" id="filter_months" class="data__contacts--link" name="filter_birthday">Filter Contacts by Birthday Month</a></span>
+                            <div id="show_months" class="data__contacts--months">
+                                <form action="">
+                                    <!-- OUTPUT MONTHS FOUND IN DATABASE CURRENTLY -->
+                                    <?php foreach($months as $month) { ?> 
+                                        <input type="submit" value="<?php echo $month ?>" name="selected_month">
+                                    <?php } ?>
+                                    <input type="hidden" name="filter_birthday" value="filter_birthday">
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
+                    <?php if(isset($_GET["filter_birthday"])) {
+                        echo '<a href="./authenticated_view.php" class="data__contacts--link">Refresh</a><br>';
+                    } ?>
                     <!-- TABLE TO SHOW CONTACT DATA -->
                     <div class="data__contacts--table">
                         <table class="data__contacts--table--sections">
