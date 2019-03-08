@@ -1,6 +1,7 @@
 <?php 
     session_start();
     if($_SESSION['loggedin'] == true) header("Location: ./views/authenticated_view.php");
+    else echo "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
