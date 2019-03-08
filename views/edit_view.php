@@ -1,5 +1,7 @@
 <?php 
+    session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
+    
     //include db creds
     include("../authorized/connection_details.php");
 
@@ -48,8 +50,8 @@
                             <?php } ?>
                     <?php }?>
                     <input type="submit" class="data__login--button" name="submit" value="EDIT CONTACT">
+                    <a href="../views/authenticated_view.php" class="data__login--button">CANCEL</a>
                     <input type="hidden" name="edit" value="edit">
-                    
                 </form>
             </div>
         </div>

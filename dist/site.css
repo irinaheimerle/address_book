@@ -40,6 +40,8 @@
         color: #E27D60; }
         .page__wrapper .data__contacts--link:hover, .page__wrapper .data__login--link:hover {
           color: #E8A87C; }
+      .page__wrapper .data__contacts--months, .page__wrapper .data__login--months {
+        display: none; }
       .page__wrapper .data__contacts--sections, .page__wrapper .data__login--sections {
         padding-left: 15px; }
         .page__wrapper .data__contacts--sections--title, .page__wrapper .data__login--sections--title {
@@ -52,7 +54,7 @@
       width: 75%; }
     .page__wrapper .data__login {
       text-align: center;
-      max-height: 300px;
+      max-height: 600px;
       width: 25%; }
       .page__wrapper .data__login--title {
         text-align: center; }

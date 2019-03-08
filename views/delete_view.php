@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
     $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); 
 ?>

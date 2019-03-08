@@ -1,4 +1,5 @@
-<?php 
+<?php
+    session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
 ?>
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
                     <input type="text" class="data__login--item" placeholder="first name" name="first_name"><br>
                     <input type="test" class="data__login--item" placeholder="surname" name="surname"><br>
                     <input type="text" class="data__login--item" placeholder="phone number" name="phone_number"><br>
+                    <input type="text" class="data__login--item" placeholder="email address" name="email_address"><br>
                     <input type="text" class="data__login--item" placeholder="postal code" name="postal_code"><br>
                     <input type="date" class="data__login--item" name="birthday"><br>
                     <input type="submit" class="data__login--button" name="submit" value="ADD CONTACT">

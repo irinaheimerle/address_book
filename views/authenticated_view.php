@@ -92,6 +92,7 @@
                         <th class="data__contacts--sections--title">Customer ID</th>
                         <th class="data__contacts--sections--title">Customer Name</th>
                         <th class="data__contacts--sections--title">Customer Phone #</th>
+                        <th class="data__contacts--sections--title">Customer Email Address</th>
                         <th class="data__contacts--sections--title">Customer Postal Code</th>
                         <th class="data__contacts--sections--title">Customer Birthday</th>
 
@@ -101,8 +102,10 @@
                             echo $contact['id'];
                             echo "</td><td class='data__contacts--sections--data'>";   
                             echo $contact['first_name'] . " " . $contact["surname"];
-                            echo "</td><td class='data__contacts--sections--data'>";    
+                            echo "</td><td class='data__contacts--sections--data'>";
                             echo $contact['phone_number'];
+                            echo "</td><td class='data__contacts--sections--data'>";
+                            echo $contact['email_address'];
                             echo "</td><td class='data__contacts--sections--data'>"; 
                             echo $contact['postal_code'];
                             echo "</td><td class='data__contacts--sections--data'>"; 
