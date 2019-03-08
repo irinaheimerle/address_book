@@ -1,13 +1,14 @@
 <?php 
     include("../authorized/connection_details.php");
-    $sql = "SELECT * FROM address_book";
+
+    $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING']));
+    
+    $sql = "SELECT * FROM address_book WHERE id=$current_contact";
     $result = $conn->query($sql);
 
-    $contacts = array();
+    $contact = array();
 
-    while($row = $result->fetch_assoc()) array_push($contacts, $row);
-
-    
+    while($row = $result->fetch_assoc()) array_push($contact, $row);
 
 ?>
 
@@ -32,11 +33,20 @@
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">EDIT CONTACT</h2>
-                    <?php foreach($contacts[0] as $key => $contact_data) { ?>
-                        <input type="text" class="data__login--item" placeholder="<?php echo $contact_data ?>" name="<?php echo $key ?>"><br>
+                    <?php foreach($contact as $contact_data) { 
+                            foreach($contact_data as $key => $data ) { ?>
+                                <?php if($key == 'id') { ?>
+                                    <!-- IF KEY IS id put into hidden field to send back to server  -->
+                                    <input type="hidden" name="id" value="<?php echo $data; ?>">
+                                <?php } else { ?>
+                                    <!-- IF KEY IS birthday put into date field for usability  -->
+                                    <input <?php if($key == 'birthday') echo 'type="date"'; else echo 'type="text"'; ?> class="data__login--item" placeholder="<?php echo $data ?>" name="<?php echo $key ?>"><br>
+                                <?php } ?>
+                            <?php } ?>
                     <?php }?>
                     <input type="submit" class="data__login--button" name="submit" value="EDIT CONTACT">
                     <input type="hidden" name="edit" value="edit">
+                    
                 </form>
             </div>
         </div>

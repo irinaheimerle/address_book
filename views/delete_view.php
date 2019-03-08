@@ -1,11 +1,4 @@
-<?php 
-    include("../authorized/connection_details.php");
-    $sql = "SELECT * FROM address_book";
-    $result = $conn->query($sql);
-
-    $contacts = array();
-    while($row = $result->fetch_assoc()) array_push($contacts, $row);
-?>
+<?php $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +21,10 @@
             <div class="data">
                 <form class="data__login" action="../controllers/Database.php">
                     <h2 class="data__login--title">DELETE CONTACT</h2>
-                    <p>Are you sure you want to delete customer <?php echo $contacts[0]["id"]; ?></p>
+                    <p>Are you sure you want to delete customer <?php echo $current_contact; ?></p>
                     <input type="submit" class="data__login--item" value="Yes"><br>
                     <a href="./authenticated_view.php" class="data__login--item">Cancel</a>
-                    <input type="hidden" class="data__login--item" name="id" value="<?php echo $contacts[0]["id"]; ?>"><br>
+                    <input type="hidden" class="data__login--item" name="id" value="<?php echo $current_contact; ?>"><br>
                     <input type="hidden" class="data__login--item" name="delete" value="delete"><br>
                 </form>
             </div>

@@ -5,6 +5,7 @@
         private $access = false; 
 
         public function login() {
+            session_start();
             include("../authorized/connection_details.php");
 
             if ($stmt = mysqli_prepare($conn, "SELECT username, password FROM users WHERE username = ?")) {
@@ -16,11 +17,13 @@
                 $stmt->bind_result($username, $db_password);
                 $stmt->fetch();
 
-                // TO-DO: HASH PASSWORD
-                // if (password_verify($this->password, $db_password)) echo "LOGGED IN";
-                //else echo $this->password, $db_password;
-
-                if($this->password == $db_password) header("Location: ../views/authenticated_view.php");
+                // // TO-DO: HASH PASSWORD
+                if (password_verify($this->password, $db_password)) {
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['username'] = $this->username;
+                    $_SESSION['contacts'] = array();
+                    header("Location: ../views/authenticated_view.php");exit;
+                }
             }
         }
         

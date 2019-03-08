@@ -4,3 +4,25 @@
                             echo '<a href="" class="data__contacts--link">Edit</a>' . " | " . '<a href="" class="data__contacts--link">Delete</a>' . " | " . '<a href="" class="data__contacts--link">Full Details</a>';
                         }?>
                     <?php } ?>
+
+
+
+
+
+
+
+
+                    <?php while($row = $result->fetch_assoc()) {
+                            echo "<tr class='data__contacts--sections--row'><td class='data__contacts--sections--data'>"; 
+                            echo $row['id'];
+                            echo "</td><td class='data__contacts--sections--data'>";   
+                            echo $row['first_name'] . " " . $row["surname"];
+                            echo "</td><td class='data__contacts--sections--data'>";    
+                            echo $row['phone_number'];
+                            echo "</td><td class='data__contacts--sections--data'>"; 
+                            echo $row['postal_code'];
+                            echo "</td><td class='data__contacts--sections--data'>"; 
+                            echo $row['birthday'];
+                            echo " " . '<a href=./edit_view.php?id=', $row["id"] ,' class="data__contacts--link">Edit</a>' . " " . '<a href="./delete_view.php" class="data__contacts--link">Delete</a>';
+                            echo "</td></tr>"; 
+                        }?>

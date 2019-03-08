@@ -1,6 +1,7 @@
 <?php 
     include("../models/Contact.php");
     include("../models/Authentication.php");
+    include("../models/Files.php");
 
     if(isset($_GET["login"]) && isset($_GET["username"]) && isset($_GET["password"])) {
         $user = new Authentication();
@@ -10,6 +11,18 @@
 
         $user->login();
         
+    }
+
+    if(isset($_GET["filter_birthday"])) {
+        $contact = new Contact();
+
+        $contact->filterContacts();
+    }
+
+    if(isset($_GET["export_csv"])) {
+        $file = new Files();
+
+        $file->exportCSV();
     }
 
     if(isset($_GET["add"])) {
@@ -37,7 +50,7 @@
             $contact->birthday = $_GET["birthday"];
     
             $contact->editContact();
-        }
+        } else echo "yoooo";
     }
 
     if(isset($_GET["delete"])) {
