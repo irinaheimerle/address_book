@@ -25,15 +25,24 @@
         $file->exportCSV();
     }
 
+    if(isset($_POST["import_csv"])) {
+        $file = new Files();
+
+        $file->given_file = $_FILES['given_file'];
+
+        $file->importCSV();
+        
+    }
+
     if(isset($_GET["add"])) {
         if(isset($_GET["first_name"]) && isset($_GET["surname"]) && isset($_GET["phone_number"]) && isset($_GET["email_address"]) && isset($_GET["postal_code"]) && isset($_GET["birthday"])) {
             $contact = new Contact();
-            $contact->first_name = $_GET["first_name"];
-            $contact->surname = $_GET["surname"];
-            $contact->phone_number = $_GET["phone_number"];
-            $contact->email_address = $_GET["email_address"];
-            $contact->postal_code = $_GET["postal_code"];
-            $contact->birthday = $_GET["birthday"];
+            $contact->first_name = filter_var($_GET["first_name"], FILTER_SANITIZE_STRING);
+            $contact->surname =filter_var($_GET["surname"],FILTER_SANITIZE_STRING);
+            $contact->phone_number = filter_var($_GET["phone_number"], FILTER_SANITIZE_STRING);
+            $contact->email_address = filter_var($_GET["email_address"], FILTER_SANITIZE_STRING);
+            $contact->postal_code = filter_var($_GET["postal_code"], FILTER_SANITIZE_STRING);
+            $contact->birthday = filter_var($_GET["birthday"], FILTER_SANITIZE_STRING);
     
             $contact->addContact();
         }
@@ -44,12 +53,12 @@
         if(isset($_GET["id"]) && isset($_GET["first_name"]) && isset($_GET["surname"]) && isset($_GET["phone_number"]) && isset($_GET["postal_code"]) && isset($_GET["birthday"])) {
             $contact = new Contact();
             $contact->id = $_GET["id"];
-            $contact->first_name = $_GET["first_name"];
-            $contact->surname = $_GET["surname"];
-            $contact->email_address = $_GET["email_address"];
-            $contact->phone_number = $_GET["phone_number"];
-            $contact->postal_code = $_GET["postal_code"];
-            $contact->birthday = $_GET["birthday"];
+            $contact->first_name = filter_var($_GET["first_name"], FILTER_SANITIZE_STRING);
+            $contact->surname =filter_var($_GET["surname"],FILTER_SANITIZE_STRING);
+            $contact->phone_number = filter_var($_GET["phone_number"], FILTER_SANITIZE_STRING);
+            $contact->email_address = filter_var($_GET["email_address"], FILTER_SANITIZE_STRING);
+            $contact->postal_code = filter_var($_GET["postal_code"], FILTER_SANITIZE_STRING);
+            $contact->birthday = filter_var($_GET["birthday"], FILTER_SANITIZE_STRING);
     
             $contact->editContact();
         }

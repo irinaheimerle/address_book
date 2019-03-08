@@ -65,22 +65,24 @@
                 <p class="main__subtitle" id="subtitle">Administration: Welcome, <?php echo $_SESSION["username"]; ?></p><br>
             </div>
 
-            <!-- DATA SECTION: CONTACTS  -->
+            <!-- DATA SECTION: FUNCTIONS / OPTIONS  -->
             <div class="data">
                 <div class="data__options">
                     <form action="../controllers/Database.php">
                         <p>Functions</p>
                         <input type="submit" name="export_csv" value="Export CSV"><br><br>
-                        <input type="submit" name="import_csv" value="Import CSV"><br><br>
+                        <a class="data__contacts--link" href="./import_view.php">Import CSV</a><br>
                         <a class="data__contacts--link" href="./add_view.php">Add Contact</a>
                     </form>
                 </div>
+                <!-- DATA SECTION: CONTACTS  -->
                 <div class="data__contacts">
                     <h2 class="data__contacts--title">CONTACTS</h2>
                     <div class="data__contacts--filter">
                         <a href="#" id="filter_months" class="data__contacts--link" name="filter_birthday">Filter Contacts by Birthday Month</a></span>
                         <div id="show_months" class="data__contacts--months">
                             <form action="">
+                                <!-- OUTPUT MONTHS FOUND IN DATABASE CURRENTLY -->
                                 <?php foreach($months as $month) { ?> 
                                     <input type="submit" value="<?php echo $month ?>" name="selected_month">
                                 <?php } ?>

@@ -2,6 +2,8 @@
     session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
     $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); 
+
+    $file_msg = $_SERVER['QUERY_STRING'];
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +20,20 @@
             <!-- MAIN SECTION: INTRO | DESCRIPTION -->
             <div class="main">
                 <h3 class="main__title" id="title">Address Book</h3>
-                <p class="main__subtitle" id="subtitle">Administration: DELETE Contact</p><br>
+                <p class="main__subtitle" id="subtitle">Administration: IMPORT CSV</p><br>
             </div>
 
             <!-- DATA SECTION: FORM | CONTACTS  -->
             <div class="data">
-                <form class="data__login" action="../controllers/Database.php">
-                    <h2 class="data__login--title">DELETE CONTACT</h2>
-                    <p>Are you sure you want to delete customer <?php echo $current_contact; ?></p>
-                    <input type="submit" class="data__login--item" value="Yes"><br>
-                    <a href="./authenticated_view.php" class="data__login--item">Cancel</a>
-                    <input type="hidden" class="data__login--item" name="id" value="<?php echo $current_contact; ?>"><br>
-                    <input type="hidden" class="data__login--item" name="delete" value="delete"><br>
+                <form enctype="multipart/form-data" class="data__login" action="../controllers/Database.php"  method="POST">
+                    <h2 class="data__login--title">IMPORT CSV</h2>
+                    <input type="file" name="given_file" class="data__login--item">
+                    <input type="submit" value="Import File" class="data__login--button">
+                    <a href="../views/authenticated_view.php" class="data__login--button">CANCEL</a>
+                    <input type="hidden" value="import_csv" name="import_csv">
                 </form>
             </div>
+            <?php if($file_msg != '') echo '<p>' . $file_msg . '</p>'?>
         </div>
     </body>
 </html>

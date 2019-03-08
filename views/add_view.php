@@ -30,6 +30,7 @@
                     <input type="text" class="data__login--item" placeholder="postal code" name="postal_code"><br>
                     <input type="date" class="data__login--item" name="birthday"><br>
                     <input type="submit" class="data__login--button" name="submit" value="ADD CONTACT">
+                    <a href="../views/authenticated_view.php" class="data__login--button">CANCEL</a>
                     <input type="hidden" name="add" value="add">
                 </form>
             </div>

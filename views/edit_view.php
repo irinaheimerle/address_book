@@ -45,7 +45,7 @@
                                     <input type="hidden" name="id" value="<?php echo $data; ?>">
                                 <?php } else { ?>
                                     <!-- IF KEY IS birthday put into date field for usability  -->
-                                    <input <?php if($key == 'birthday') echo 'type="date"'; else echo 'type="text"'; ?> class="data__login--item" placeholder="<?php echo $data ?>" name="<?php echo $key ?>"><br>
+                                    <input <?php if($key == 'birthday') echo 'type="date"'; else echo 'type="text"'; ?> class="data__login--item" placeholder="<?php echo $data ?>" name="<?php echo $key ?>" required><br>
                                 <?php } ?>
                             <?php } ?>
                     <?php }?>
