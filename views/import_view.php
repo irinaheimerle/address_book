@@ -2,8 +2,6 @@
     session_start();
     if($_SESSION['loggedin'] == false) header("Location: ../index.php");
     $current_contact = (int) substr($_SERVER['QUERY_STRING'], 3, strlen($_SERVER['QUERY_STRING'])); 
-
-    $file_msg = $_SERVER['QUERY_STRING'];
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +31,6 @@
                     <input type="hidden" value="import_csv" name="import_csv">
                 </form>
             </div>
-            <?php if($file_msg != '') echo '<p>' . $file_msg . '</p>'?>
         </div>
     </body>
 </html>

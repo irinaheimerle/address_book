@@ -33,6 +33,28 @@
             }
         }
     }
+
+    $output = "";
+    $sent = false;
+    
+    //if client chooses email function
+    if(isset($_GET["email"])) {
+        // the message
+        $msg = "Hello, I want to welcome you to our company!";
+
+        // use wordwrap() if lines are longer than 70 characters
+        $msg = wordwrap($msg,70);
+
+        foreach($contacts as $contact) {
+            //mail($contact["email_address"],"Welcome to our Company",$msg);
+            $sent = true;
+        }
+
+        //let the client know!
+        if($sent) $output = "Email Sent!";
+    }
+
+
     
 ?>
 
@@ -56,11 +78,14 @@
             <!-- DATA SECTION: FUNCTIONS / OPTIONS  -->
             <div class="data">
                 <div class="data__options">
+                    <p>Functions</p>
+                    <form action="">
+                        <input type="submit" name="email" value="Email Contacts"><br><br>
+                    </form>
                     <form action="../controllers/Database.php">
-                        <p>Functions</p>
                         <input type="submit" name="export_csv" value="Export CSV"><br><br>
-                        <a class="data__contacts--link" href="./import_view.php">Import CSV</a><br>
-                        <a class="data__contacts--link" href="./add_view.php">Add Contact</a>
+                        <a class="data__contacts--link" href="./import_view.php">Import CSV</a><br><br>
+                        <a class="data__contacts--link" href="./add_view.php">Add Contact</a><br>
                     </form>
                 </div>
                 <!-- DATA SECTION: CONTACTS  -->
@@ -82,6 +107,9 @@
                     <?php } ?>
                     <?php if(isset($_GET["filter_birthday"])) {
                         echo '<a href="./authenticated_view.php" class="data__contacts--link">Refresh</a><br>';
+                    } ?>
+                    <?php if($output != "") {
+                        echo '<p>' . $output . '</p>';
                     } ?>
                     <!-- TABLE TO SHOW CONTACT DATA -->
                     <div class="data__contacts--table">

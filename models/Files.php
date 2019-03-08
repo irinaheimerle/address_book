@@ -13,11 +13,13 @@
             //while there are rows, write row to file
             while($row = $result->fetch_assoc()) fputcsv($fp, $row);
 
+            //if session exists, redirect
+            if($_SESSION['loggedin'] == true) {
+                header("Location: ../views/authenticated_view.php");
+            }
+
             //close file
             fclose($fp);
-
-            //if session exists, redirect
-            if($_SESSION['loggedin'] == true) header("Location: ../views/authenticated_view.php");
         }
 
         public function importCSV() {
